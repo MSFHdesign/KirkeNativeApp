@@ -81,7 +81,14 @@ const FirebaseDisplay = ({ dbName }) => {
       <ImageBackground
         source={require("../../assets/bg.png")}
         resizeMode="cover"
-        style={{ flex: 1 }}
+        style={{
+          flex: 1,
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          top: 0,
+        }}
       >
         <TextInput
           onChangeText={(text) => setSearchQuery(text)}

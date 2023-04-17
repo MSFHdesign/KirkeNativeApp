@@ -2,6 +2,7 @@ import { StyleSheet, Platform } from "react-native";
 
 const styles = StyleSheet.create({
   tabBarStyle: {
+    display: "none",
     backgroundColor: "#889466",
     paddingBottom: Platform.OS === "ios" ? 0 : 5,
     height: Platform.OS === "ios" ? 90 : 70, // add height for ios
