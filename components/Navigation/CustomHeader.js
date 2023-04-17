@@ -11,7 +11,7 @@ const CustomHeader = () => {
     <View
       style={{
         backgroundColor: "#889466",
-        padding: (1 / 2) * Constants.statusBarHeight,
+        paddingBottom: (1 / 2) * Constants.statusBarHeight,
       }}
     >
       <TouchableOpacity onPress={() => navigation.navigate("home")}>
