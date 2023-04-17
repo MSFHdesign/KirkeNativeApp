@@ -11,6 +11,7 @@ function HomeScreen({ navigation }) {
       >
         <View style={styles.cardContainer}>
           <Text style={styles.title}>Velkommen til Kirkeappen</Text>
+
           <View style={styles.card}>
             <View>
               <Text style={styles.cardTitle}>Historier fra Kirkegården</Text>
