@@ -1,0 +1,31 @@
+# Expo-specific files
+node_modules/
+.expo/
+.expo-shared/
+.idea/
+.vscode/
+npm-debug.log*
+yarn-error.log*
+
+# Compiled files
+**/build/
+**/dist/
+**/android/app/build/
+**/ios/build/
+**/android/app/intermediates/
+**/ios/Pods/
+**/*.xcworkspace/xcuserdata/
+**/*.xcodeproj/xcuserdata/
+
+# Environment-specific files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Miscellaneous
+*.log
+*.backup
+*.swp
+.DS_Store
+Thumbs.db
