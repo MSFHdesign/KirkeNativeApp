@@ -21,9 +21,12 @@ const FirebaseDisplay = ({ dbName }) => {
   const [sortDirection, setSortDirection] = useState("asc");
   const [showSortOptions, setShowSortOptions] = useState(false);
   const [showAll, setShowAll] = useState(false);
+  const [numStoriesToShow, setNumStoriesToShow] = useState(10);
 
   useEffect(() => {
+    console.log("dbName prop:", dbName);
     const q = query(collection(db, dbName));
+
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const results = querySnapshot.docs.map((doc) => ({
         id: doc.id,
@@ -76,6 +79,17 @@ const FirebaseDisplay = ({ dbName }) => {
     setShowSortOptions(false);
   };
 
+  const loadMoreStories = () => {
+    setNumStoriesToShow(numStoriesToShow + 10);
+  };
+
+  const renderFooter = () => {
+    return (
+      <TouchableOpacity style={styles.loadMoreButton} onPress={loadMoreStories}>
+        <Text style={styles.loadMoreButtonText}>Load More</Text>
+      </TouchableOpacity>
+    );
+  };
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -140,7 +154,7 @@ const FirebaseDisplay = ({ dbName }) => {
           </Text>
         ) : (
           <FlatList
-            data={filteredData}
+            data={filteredData.slice(0, numStoriesToShow)}
             renderItem={({ item }) => (
               <View style={styles.itemContainer}>
                 {item.imageUrl ? (
@@ -155,11 +169,28 @@ const FirebaseDisplay = ({ dbName }) => {
 
                 <Text style={styles.born}>Født: {item.born}</Text>
                 <Text style={styles.death}>Afgået: {item.death}</Text>
-                <Text>{item.graveId}</Text>
                 <Story item={item} />
               </View>
             )}
             keyExtractor={(item) => item.id}
+            ListFooterComponent={
+              filteredData.length > 10 && (
+                <TouchableOpacity
+                  onPress={() => setNumStoriesToShow(numStoriesToShow + 10)}
+                  style={styles.loadMoreButton}
+                >
+                  {filteredData.length > numStoriesToShow ? (
+                    <Text style={styles.loadMoreButtonText}>
+                      Load More Stories
+                    </Text>
+                  ) : (
+                    <Text style={styles.loadMoreButtonText}>
+                      Ikke flere historier at hente
+                    </Text>
+                  )}
+                </TouchableOpacity>
+              )
+            }
           />
         )}
       </ImageBackground>

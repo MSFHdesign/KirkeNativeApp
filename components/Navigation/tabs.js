@@ -1,7 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import { useNavigation } from "@react-navigation/native";
 import CustomHeader from "./CustomHeader";
-
 // Screens:
 import DisplayHistorical from "../Pages/DisplayHistorical";
 import DisplayPersonale from "../Pages/DisplayPersonale";
@@ -10,16 +9,16 @@ import HomeScreen from "../Pages/HomeScreen";
 // Style
 import styles from "./navstyle";
 
-const Tab = createBottomTabNavigator();
-
 const Tabs = () => {
+  const Tab = createBottomTabNavigator();
+  const navigation = useNavigation();
+
   return (
     <Tab.Navigator
       screenOptions={{
-        header: CustomHeader,
+        header: () => <CustomHeader navigation={navigation} />,
         headerTintColor: "#fff",
         tabBarStyle: styles.tabBarStyle,
-        headerStyle: styles.headerStyle,
       }}
     >
       <Tab.Screen name="home" component={HomeScreen} />
