@@ -4,30 +4,35 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function DisplayPersonale() {
   const [selectedSuggestion, setSelectedSuggestion] = useState(null);
+  const [storageChanged, setStorageChanged] = useState(false);
 
   useEffect(() => {
     const retrieveSelectedSuggestion = async () => {
-      const value = await AsyncStorage.getItem("selectedSuggestion");
-      if (value !== undefined && value !== selectedSuggestion) {
+      const value = await AsyncStorage.getItem("selectedOption");
+      if (value !== selectedSuggestion) {
         setSelectedSuggestion(value);
-        console.log("selectedSuggestion:", value);
+      }
+    };
+
+    const checkStorageChanges = async () => {
+      const initialVal = await AsyncStorage.getItem("selectedOption");
+      let newVal = initialVal;
+      while (true) {
+        const currentVal = await AsyncStorage.getItem("selectedOption");
+        if (currentVal !== newVal) {
+          newVal = currentVal;
+          setSelectedSuggestion(newVal);
+          setStorageChanged(true);
+        }
       }
     };
 
     retrieveSelectedSuggestion().catch((error) => console.log(error));
-  }, [selectedSuggestion]);
-
-  useEffect(() => {
-    // This effect will run whenever `selectedSuggestion` changes
-    console.log("selectedSuggestion has changed:", selectedSuggestion);
+    checkStorageChanges().catch((error) => console.log(error));
   }, [selectedSuggestion]);
 
   return (
-    <>
-      {selectedSuggestion && (
-        <FirebaseDisplay key={selectedSuggestion} dbName={selectedSuggestion} />
-      )}
-    </>
+    <>{selectedSuggestion && <FirebaseDisplay dbName={selectedSuggestion} />}</>
   );
 }
 

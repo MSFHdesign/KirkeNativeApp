@@ -24,9 +24,7 @@ const FirebaseDisplay = ({ dbName }) => {
   const [numStoriesToShow, setNumStoriesToShow] = useState(10);
 
   useEffect(() => {
-    console.log("dbName prop:", dbName);
     const q = query(collection(db, dbName));
-
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const results = querySnapshot.docs.map((doc) => ({
         id: doc.id,
@@ -79,17 +77,6 @@ const FirebaseDisplay = ({ dbName }) => {
     setShowSortOptions(false);
   };
 
-  const loadMoreStories = () => {
-    setNumStoriesToShow(numStoriesToShow + 10);
-  };
-
-  const renderFooter = () => {
-    return (
-      <TouchableOpacity style={styles.loadMoreButton} onPress={loadMoreStories}>
-        <Text style={styles.loadMoreButtonText}>Load More</Text>
-      </TouchableOpacity>
-    );
-  };
   return (
     <View style={styles.container}>
       <ImageBackground
