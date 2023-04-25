@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-import { collection, query, getDocs, onSnapshot } from "firebase/firestore";
+import { collection, query, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import logo512 from "../../assets/logo512.png";
 import styles from "./Displaystyles.js";
@@ -154,6 +154,7 @@ const FirebaseDisplay = ({ dbName }) => {
                   {item.firstName} {item.lastName}
                 </Text>
 
+                <Text style={styles.GraveId}>Grav nummer: {item.graveId}</Text>
                 <Text style={styles.born}>Født: {item.born}</Text>
                 <Text style={styles.death}>Afgået: {item.death}</Text>
                 <Story item={item} />

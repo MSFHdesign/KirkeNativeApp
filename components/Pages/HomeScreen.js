@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Button, Text, StyleSheet, ImageBackground } from "react-native";
-
+import { Pressable } from "react-native";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import ButtonStyle from "../../Styles/ButtonStyling";
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
@@ -13,27 +14,16 @@ function HomeScreen({ navigation }) {
           <Text style={styles.title}>Velkommen til Kirkeappen</Text>
 
           <View style={styles.card}>
-            <View>
-              <Text style={styles.cardTitle}>Historier fra Kirkegården</Text>
-              <Text style={styles.cardText}>
-                Vidste du at kirkegårde er fyldt med historier, som kun få
-                mennesker kender?
-              </Text>
-              <Button
-                title="Læs mere"
-                onPress={() => navigation.navigate("Historiske")}
-              />
-            </View>
-          </View>
-          <View style={styles.card}>
             <Text style={styles.cardTitle}>Lokal historie</Text>
             <Text style={styles.cardText}>
               Vidste du at lokale er fyldt med lokal historie?
             </Text>
-            <Button
-              title="Læs mere"
+            <Pressable
               onPress={() => navigation.navigate("Personlige")}
-            />
+              style={ButtonStyle.BoxFill}
+            >
+              <Text style={ButtonStyle.TextFill}> Læs mere</Text>
+            </Pressable>
           </View>
         </View>
       </ImageBackground>
@@ -44,7 +34,7 @@ function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#f2f2f2",
     paddingHorizontal: 20,
     paddingVertical: 40,
   },

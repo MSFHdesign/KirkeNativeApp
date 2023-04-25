@@ -10,7 +10,7 @@ import Constants from "expo-constants";
 import SearchBar from "./Picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
-
+import buttonStyling from "../../Styles/ButtonStyling";
 const CustomHeader = ({ navigation }) => {
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Vælg kirkegård");
@@ -52,7 +52,7 @@ const CustomHeader = ({ navigation }) => {
       <View
         style={{
           width: "100%",
-          backgroundColor: "white",
+          backgroundColor: "#f2f2f2",
           paddingTop: 1.2 * Constants.statusBarHeight,
           paddingBottom: (1 / 2) * Constants.statusBarHeight,
           flexDirection: "row",
@@ -82,11 +82,10 @@ const CustomHeader = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <TouchableOpacity
+          style={buttonStyling.BoxNofill}
           onPress={() => setIsSearchBarVisible((prevState) => !prevState)}
         >
-          <Text style={{ color: "black", fontSize: 16, marginRight: 10 }}>
-            {selectedOption}
-          </Text>
+          <Text style={buttonStyling.TextNofill}>{selectedOption}</Text>
         </TouchableOpacity>
       </View>
       <TouchableWithoutFeedback onPress={() => setIsSearchBarVisible(false)}>

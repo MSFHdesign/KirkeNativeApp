@@ -12,6 +12,8 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "white",
     borderRadius: 26,
+    width: '80%',
+    marginLeft: '10%',
   },
   name: {
     fontSize: 20,
