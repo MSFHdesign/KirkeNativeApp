@@ -1,39 +1,103 @@
-import React from "react";
-import { Image, Text, View, TouchableOpacity } from "react-native";
+import {
+  Image,
+  Text,
+  View,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 import Logo from "../../assets/logo192.png";
 import Constants from "expo-constants";
-import Picker from "./Picker";
+import SearchBar from "./Picker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
 
 const CustomHeader = ({ navigation }) => {
+  const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("Vælg kirkegård");
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const value = await AsyncStorage.getItem("selectedOption");
+        if (value !== null) {
+          setSelectedOption(value);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    getData();
+  }, []);
+
+  useEffect(() => {
+    const checkStorageChanges = async () => {
+      while (true) {
+        const currentVal = await AsyncStorage.getItem("selectedOption");
+        if (currentVal !== selectedOption) {
+          setSelectedOption(currentVal);
+        }
+      }
+    };
+
+    checkStorageChanges().catch((error) => console.log(error));
+  }, [selectedOption]);
+
+  const handleSearchBarClose = () => {
+    setIsSearchBarVisible(false);
+  };
+
   return (
-    <View
-      style={{
-        width: "100%",
-        backgroundColor: "#889466",
-        paddingBottom: (1 / 2) * Constants.statusBarHeight,
-        flexDirection: "row", // display the child components in a row
-        justifyContent: "space-between", // align the child components on either side
-        alignItems: "center", // align the child components vertically in the center
-      }}
-    >
-      <TouchableOpacity
-        onPress={() => navigation.navigate("home")}
+    <>
+      <View
         style={{
-          width: '10%',
-          marginLeft: 20,
-          marginTop: Constants.statusBarHeight,
+          width: "100%",
+          backgroundColor: "white",
+          paddingTop: 1.2 * Constants.statusBarHeight,
+          paddingBottom: (1 / 2) * Constants.statusBarHeight,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          paddingHorizontal: 10,
         }}
       >
-        <Image
-          source={Logo}
+        <View
           style={{
-            height: 50,
-            width: 50,
+            flexDirection: "row",
+            alignItems: "center",
+            flex: 1,
+            justifyContent: "center",
           }}
-        />
-      </TouchableOpacity>
-      <Picker />
-    </View>
+        >
+          <TouchableOpacity
+            onPress={() => navigation.navigate("home")}
+            style={{
+              width: 50,
+              height: 50,
+              marginLeft: 10,
+              marginRight: "auto",
+            }}
+          >
+            <Image source={Logo} style={{ height: "100%", width: "100%" }} />
+          </TouchableOpacity>
+        </View>
+        <TouchableOpacity
+          onPress={() => setIsSearchBarVisible((prevState) => !prevState)}
+        >
+          <Text style={{ color: "black", fontSize: 16, marginRight: 10 }}>
+            {selectedOption}
+          </Text>
+        </TouchableOpacity>
+      </View>
+      <TouchableWithoutFeedback onPress={() => setIsSearchBarVisible(false)}>
+        <View style={{ flex: 1 }}>
+          <SearchBar
+            isVisible={isSearchBarVisible}
+            onClose={handleSearchBarClose}
+          />
+        </View>
+      </TouchableWithoutFeedback>
+    </>
   );
 };
 
