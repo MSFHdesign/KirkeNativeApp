@@ -82,26 +82,31 @@ const SearchBar = ({ isVisible, onClose = () => {} }) => {
           value={filter}
           onChangeText={setFilter}
         />
-        <FlatList
-          style={[styles.optionsList, { maxHeight: "70%" }]}
-          data={filteredOptions}
-          renderItem={({ item }) => (
-            <Text
-              style={[
-                styles.optionItem,
-                item === selectedOption && styles.selectedOption,
-              ]}
-              onPress={() => {
-                handleSelect(item);
-                onClose();
-              }}
-            >
-              {item}
-            </Text>
-          )}
-          keyExtractor={(item) => item}
-          scrollEnabled={true}
-        />
+        {filteredOptions.length ? (
+          <FlatList
+            style={[styles.optionsList, { maxHeight: "70%", minHeight: "50%" }]}
+            data={filteredOptions}
+            renderItem={({ item }) => (
+              <Text
+                style={[
+                  styles.optionItem,
+                  item === selectedOption && styles.selectedOption,
+                ]}
+                onPress={() => {
+                  handleSelect(item);
+                  onClose();
+                }}
+              >
+                {item}
+              </Text>
+            )}
+            keyExtractor={(item) => item}
+            scrollEnabled={true}
+          />
+        ) : (
+          <Text>Intet at vise</Text>
+        )}
+
         <Pressable
           title="Luk"
           style={buttonStyling.BoxNofill}
@@ -133,8 +138,12 @@ const styles = StyleSheet.create({
     right: "5%",
     borderRadius: 30,
     maxHeight: "80%",
-    minHeight: "50%",
+    minHeight: "80%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
+
   title: {
     fontSize: 20,
     fontWeight: "bold",
