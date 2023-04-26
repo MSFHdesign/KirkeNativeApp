@@ -11,7 +11,9 @@ export default class Intro extends Component {
       >
         <View style={styles.container}>
           <View style={styles.box}>
-            <Text></Text>
+                    <Text></Text>
+                    <Text></Text>
+                    
           </View>
         </View>
       </ImageBackground>
@@ -30,7 +32,7 @@ const styles = StyleSheet.create({
   },
   box: {
     width: '80%',
-    height: 200,
+    height: 600,
     borderWidth: 2,
     borderColor: "white",
   },
