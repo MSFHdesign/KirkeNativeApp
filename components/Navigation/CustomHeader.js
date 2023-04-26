@@ -78,7 +78,7 @@ const CustomHeader = ({ navigation }) => {
               marginRight: "auto",
             }}
           >
-            <Image source={Logo} style={{ height: "100%", width: "100%" }} />
+            <Image source={Logo} style={{ height: "104%", width: "105%" }} />
           </TouchableOpacity>
         </View>
         <TouchableOpacity
