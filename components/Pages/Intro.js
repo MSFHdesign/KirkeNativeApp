@@ -7,29 +7,39 @@ import {
   StyleSheet,
 } from "react-native";
 
-
 export default class Intro extends Component {
   state = {
     currentContentIndex: 0,
     contents: [
       {
-        title: "Content 1",
-        text: "Tralallalala",
+        title: "Start guide",
+        text: [
+          "Kirkegårds historier er et arkiv for livshistorier om dem, der ligger begravet på danske kirkegårde.",
+        ],
         completed: false,
       },
       {
-        title: "Content 2",
-        text: "Tralallalala",
+        title: "Logo",
+        text: [
+          "Forsiden",
+          "Tryk på logoet i top venstre hjørne for at komme tilbage til startskærmen.",
+        ],
         completed: false,
       },
       {
-        title: "Content 3",
-        text: "Tralallalala",
+        title: "Vælg en kirkegård",
+        text: [
+          "Valg af kirkegård",
+          "Ved at trykke på knappen øverste højre hjørne kan du vælge hvilken kirkegård du befinder dig på eller gerne vil besøge.",
+        ],
         completed: false,
       },
       {
-        title: "Content 4",
-        text: "Tralallalala",
+        title: "Tilføj historie",
+        text: [
+          "Tilføj en historie.",
+          "Inde på en historie kan du tilføje en lille ekstra historie om den begravede hvorefter den bliver sendt til godkendelse",
+        ],
         completed: false,
       },
     ],
@@ -61,28 +71,38 @@ export default class Intro extends Component {
       >
         <View style={styles.container}>
           <View style={styles.box}>
-            <Text>{contents[currentContentIndex].title}</Text>
-            <Text>{contents[currentContentIndex].text}</Text>
-
-            <View style={styles.buttons}>
-              <Pressable onPress={this.handleSkipIntro}>
-                <Text>Skip Intro</Text>
-              </Pressable>
-              <Pressable onPress={this.handleNext}>
-                <Text>Next</Text>
-              </Pressable>
-            </View>
-            <View style={styles.progress}>
-              {contents.map((content, index) => (
-                <View
-                  key={index}
-                  style={[
-                    styles.progressBar,
-                    content.completed && styles.progressBarCompleted,
-                    currentContentIndex === index && styles.progressBarActive,
-                  ]}
-                />
+            <View style={styles.textWrap}>
+              <Text style={styles.headText}>
+                {contents[currentContentIndex].title}
+              </Text>
+              {contents[currentContentIndex].text.map((line, index) => (
+                <Text key={index} style={styles.text}>
+                  {line}
+                </Text>
               ))}
+            </View>
+
+            <View style={styles.buttonWrap}>
+              <View style={styles.buttons}>
+                <Pressable onPress={this.handleSkipIntro}>
+                  <Text>Skip Intro</Text>
+                </Pressable>
+                <Pressable onPress={this.handleNext}>
+                  <Text>Next</Text>
+                </Pressable>
+              </View>
+              <View style={styles.progress}>
+                {contents.map((content, index) => (
+                  <View
+                    key={index}
+                    style={[
+                      styles.progressBar,
+                      content.completed && styles.progressBarCompleted,
+                      currentContentIndex === index && styles.progressBarActive,
+                    ]}
+                  />
+                ))}
+              </View>
             </View>
           </View>
         </View>
@@ -98,6 +118,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+
     alignItems: "center",
   },
   box: {
@@ -105,7 +126,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     height: 400,
     backgroundColor: "white",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
     elevation: 4,
     shadowColor: "black",
@@ -116,7 +137,17 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     shadowOpacity: 1,
   },
-
+  textWrap: {
+    height: "50%",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+  },
+  headText: {
+    fontSize: 30,
+  },
+  text: {
+    fontSize: 20,
+  },
   progress: {
     flexDirection: "row",
     marginVertical: 20,
@@ -137,6 +168,5 @@ const styles = StyleSheet.create({
   buttons: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "80%",
   },
 });
