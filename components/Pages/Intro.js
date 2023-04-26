@@ -5,9 +5,11 @@ import {
   View,
   ImageBackground,
   StyleSheet,
+  Image,
 } from "react-native";
 import buttonStyling from "../../Styles/ButtonStyling";
 import CustomHeader from "../Navigation/CustomHeader";
+import Logo from "../../assets/logo192.png";
 
 export default class Intro extends Component {
   state = {
@@ -22,6 +24,7 @@ export default class Intro extends Component {
       },
       {
         title: "Logo",
+        picture: Logo,
         text: [
           "Forsiden",
           "Tryk på logoet i top venstre hjørne for at komme tilbage til startskærmen.",
@@ -80,9 +83,16 @@ export default class Intro extends Component {
         <View style={styles.container}>
           <View style={styles.box}>
             <View style={styles.textWrap}>
-              <Text style={styles.headText}>
-                {contents[currentContentIndex].title}
-              </Text>
+              {contents[currentContentIndex].picture ? (
+                <Image
+                  source={contents[currentContentIndex].picture}
+                  style={styles.picture}
+                />
+              ) : (
+                <Text style={styles.headText}>
+                  {contents[currentContentIndex].title}
+                </Text>
+              )}
               {contents[currentContentIndex].text.map((line, index) => (
                 <Text key={index} style={styles.text}>
                   {line}
