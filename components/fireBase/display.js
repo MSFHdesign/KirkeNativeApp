@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-import { collection, query, getDocs, onSnapshot } from "firebase/firestore";
+import { collection, query, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import logo512 from "../../assets/logo512.png";
 import styles from "./Displaystyles.js";
@@ -21,6 +21,7 @@ const FirebaseDisplay = ({ dbName }) => {
   const [sortDirection, setSortDirection] = useState("asc");
   const [showSortOptions, setShowSortOptions] = useState(false);
   const [showAll, setShowAll] = useState(false);
+  const [numStoriesToShow, setNumStoriesToShow] = useState(10);
 
   useEffect(() => {
     const q = query(collection(db, dbName));
@@ -140,7 +141,7 @@ const FirebaseDisplay = ({ dbName }) => {
           </Text>
         ) : (
           <FlatList
-            data={filteredData}
+            data={filteredData.slice(0, numStoriesToShow)}
             renderItem={({ item }) => (
               <View style={styles.itemContainer}>
                 {item.imageUrl ? (
@@ -153,13 +154,31 @@ const FirebaseDisplay = ({ dbName }) => {
                   {item.firstName} {item.lastName}
                 </Text>
 
+                <Text style={styles.GraveId}>Grav nummer: {item.graveId}</Text>
                 <Text style={styles.born}>Født: {item.born}</Text>
                 <Text style={styles.death}>Afgået: {item.death}</Text>
-                <Text>{item.graveId}</Text>
                 <Story item={item} />
               </View>
             )}
             keyExtractor={(item) => item.id}
+            ListFooterComponent={
+              filteredData.length > 10 && (
+                <TouchableOpacity
+                  onPress={() => setNumStoriesToShow(numStoriesToShow + 10)}
+                  style={styles.loadMoreButton}
+                >
+                  {filteredData.length > numStoriesToShow ? (
+                    <Text style={styles.loadMoreButtonText}>
+                      Load More Stories
+                    </Text>
+                  ) : (
+                    <Text style={styles.loadMoreButtonText}>
+                      Ikke flere historier at hente
+                    </Text>
+                  )}
+                </TouchableOpacity>
+              )
+            }
           />
         )}
       </ImageBackground>
