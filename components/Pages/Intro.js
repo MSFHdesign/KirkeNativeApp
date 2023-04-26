@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
     width: "80%",
     borderRadius: 20,
     height: 400,
+    maxHeight: "100%",
     backgroundColor: "white",
     justifyContent: "space-between",
     alignItems: "center",
@@ -138,7 +139,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
   },
   textWrap: {
-    height: "50%",
+    width: "80%",
+    paddingTop: 10,
     justifyContent: "space-evenly",
     alignItems: "center",
   },
