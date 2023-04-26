@@ -6,7 +6,6 @@ import {
   FlatList,
   StyleSheet,
   Modal,
-  Dimensions,
   Pressable,
   TouchableOpacity,
 } from "react-native";
@@ -14,10 +13,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Constants from "expo-constants";
 import buttonStyling from "../../Styles/ButtonStyling";
 
-const windowHeight = Dimensions.get("window").height;
-
 const SearchBar = ({ isVisible, onClose = () => {} }) => {
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("Vælg kirkegård");
   const [placeholderText, setPlaceholderText] = useState(
     "Søg efter en kirkegård"
   );
@@ -27,8 +24,8 @@ const SearchBar = ({ isVisible, onClose = () => {} }) => {
     const retrieveSelectedOption = async () => {
       const value = await AsyncStorage.getItem("selectedOption");
       if (value !== selectedOption) {
-        setSelectedOption(value);
-        setPlaceholderText(value || "Vælg kirkegård");
+        setSelectedOption(value || "Vælg kirkegård"); // set default value if value is null or undefined
+        setPlaceholderText(value || "Vælg kirkegård"); // set default value if value is null or undefined
       }
     };
 
@@ -78,6 +75,7 @@ const SearchBar = ({ isVisible, onClose = () => {} }) => {
         <Text style={styles.title}>Vælg en kirkegård</Text>
         <TextInput
           style={styles.filterInput}
+          placeholderTextColor={"black"}
           placeholder={placeholderText}
           value={filter}
           onChangeText={setFilter}
@@ -107,11 +105,7 @@ const SearchBar = ({ isVisible, onClose = () => {} }) => {
           <Text>Intet at vise</Text>
         )}
 
-        <Pressable
-          title="Luk"
-          style={buttonStyling.BoxNofill}
-          onPress={onClose}
-        >
+        <Pressable style={buttonStyling.BoxNofill} onPress={onClose}>
           <Text style={buttonStyling.TextNofill}> Luk</Text>
         </Pressable>
       </View>

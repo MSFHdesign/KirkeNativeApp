@@ -16,21 +16,6 @@ const CustomHeader = ({ navigation }) => {
   const [selectedOption, setSelectedOption] = useState("Vælg kirkegård");
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const value = await AsyncStorage.getItem("selectedOption");
-        if (value !== null) {
-          setSelectedOption(value);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    getData();
-  }, []);
-
-  useEffect(() => {
     const checkStorageChanges = async () => {
       while (true) {
         const currentVal = await AsyncStorage.getItem("selectedOption");
@@ -85,7 +70,9 @@ const CustomHeader = ({ navigation }) => {
           style={buttonStyling.BoxNofill}
           onPress={() => setIsSearchBarVisible((prevState) => !prevState)}
         >
-          <Text style={buttonStyling.TextNofill}>{selectedOption}</Text>
+          <Text style={buttonStyling.TextNofill}>
+            {selectedOption === null ? "Vælg kirkegård" : selectedOption}
+          </Text>
         </TouchableOpacity>
       </View>
       <TouchableWithoutFeedback onPress={() => setIsSearchBarVisible(false)}>

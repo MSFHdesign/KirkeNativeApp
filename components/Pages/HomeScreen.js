@@ -1,8 +1,23 @@
 import React from "react";
-import { Pressable } from "react-native";
+import { Pressable, Button } from "react-native";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import ButtonStyle from "../../Styles/ButtonStyling";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 function HomeScreen({ navigation }) {
+  {
+    /* SLET MIG */
+  }
+  const handleResetData = async () => {
+    try {
+      await AsyncStorage.clear(); // Clear all stored data
+      alert("Data has been reset successfully!");
+    } catch (e) {
+      console.error(e);
+      alert("Error resetting data!");
+    }
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -24,6 +39,12 @@ function HomeScreen({ navigation }) {
             >
               <Text style={ButtonStyle.TextFill}> Læs mere</Text>
             </Pressable>
+          </View>
+          {/* SLET MIG */}
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}> RESETTER CASHE!</Text>
+
+            <Button title="Reset Data" onPress={handleResetData} />
           </View>
         </View>
       </ImageBackground>

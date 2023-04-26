@@ -16,7 +16,7 @@ const buttonStyling = StyleSheet.create({
   },
 
   BoxNofill: {
-    backgroundColor: "rgba(0, 0, 0, 0)",
+    backgroundColor: "#fff",
     borderColor: "#889466",
     borderWidth: 2,
     borderRadius: 20,
@@ -26,6 +26,7 @@ const buttonStyling = StyleSheet.create({
   },
   TextNofill: {
     color: "black",
+
     fontSize: 18,
     fontWeight: "bold",
     textAlign: "center",
