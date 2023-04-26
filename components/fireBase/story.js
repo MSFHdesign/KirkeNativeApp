@@ -5,17 +5,25 @@ import {
   Text,
   Image,
   StyleSheet,
-  Button,
+
+  Pressable,
   ScrollView,
 } from "react-native";
 import logo512 from "../../assets/logo512.png";
+
+import buttonStyling from "../../Styles/ButtonStyling";
 const Story = (props) => {
   const { item, onClose } = props;
   const [showStory, setShowStory] = useState(false);
 
   return (
     <View style={styles.container}>
-      <Button title="Read Story" onPress={() => setShowStory(true)} />
+      <Pressable
+        onPress={() => setShowStory(true)}
+        style={buttonStyling.BoxNofill}
+      >
+        <Text style={buttonStyling.TextNofill}> Læs</Text>
+      </Pressable>
       {showStory && (
         <Modal visible={true} animationType="slide">
           <ScrollView style={styles.ScrollViewcontainer}>
@@ -41,13 +49,12 @@ const Story = (props) => {
                 </View>
               ))}
           </ScrollView>
-          <Button
-            title="close story"
-            style={styles.closeButton}
+          <Pressable
+            style={buttonStyling.BoxFill}
             onPress={() => setShowStory(false)}
           >
-            Close
-          </Button>
+            <Text style={buttonStyling.TextFill}>Close</Text>
+          </Pressable>
         </Modal>
       )}
     </View>
