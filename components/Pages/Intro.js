@@ -6,6 +6,8 @@ import {
   ImageBackground,
   StyleSheet,
 } from "react-native";
+import buttonStyling from "../../Styles/ButtonStyling";
+import CustomHeader from "../Navigation/CustomHeader";
 
 export default class Intro extends Component {
   state = {
@@ -63,12 +65,18 @@ export default class Intro extends Component {
   render() {
     const { currentContentIndex, contents } = this.state;
 
+    // check if the current index is the last one
+    const isLastIndex = currentContentIndex === contents.length - 1;
+
     return (
       <ImageBackground
         source={require("../../assets/bg.png")}
         resizeMode="cover"
         style={styles.background}
       >
+        <View style={{ position: "absolute", width: "100%" }}>
+          <CustomHeader />
+        </View>
         <View style={styles.container}>
           <View style={styles.box}>
             <View style={styles.textWrap}>
@@ -84,11 +92,25 @@ export default class Intro extends Component {
 
             <View style={styles.buttonWrap}>
               <View style={styles.buttons}>
-                <Pressable onPress={this.handleSkipIntro}>
-                  <Text>Skip Intro</Text>
-                </Pressable>
-                <Pressable onPress={this.handleNext}>
-                  <Text>Next</Text>
+                {isLastIndex ? (
+                  <></>
+                ) : (
+                  <>
+                    <Pressable
+                      style={buttonStyling.BoxNofill}
+                      onPress={this.handleSkipIntro}
+                    >
+                      <Text style={buttonStyling.TextNofill}>Skip Intro</Text>
+                    </Pressable>
+                  </>
+                )}
+                <Pressable
+                  style={buttonStyling.BoxFill}
+                  onPress={this.handleNext}
+                >
+                  <Text style={buttonStyling.TextFill}>
+                    {isLastIndex ? "Færdig" : "Næste"}
+                  </Text>
                 </Pressable>
               </View>
               <View style={styles.progress}>
@@ -114,6 +136,7 @@ export default class Intro extends Component {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    backgroundColor: "#f2f2f2",
   },
   container: {
     flex: 1,
@@ -124,7 +147,7 @@ const styles = StyleSheet.create({
   box: {
     width: "80%",
     borderRadius: 20,
-    height: 400,
+    height: 600,
     maxHeight: "100%",
     backgroundColor: "white",
     justifyContent: "space-between",
@@ -162,13 +185,19 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   progressBarActive: {
-    backgroundColor: "green",
+    backgroundColor: "#889466",
   },
   progressBarCompleted: {
-    backgroundColor: "green",
+    backgroundColor: "#889466",
   },
   buttons: {
+    gap: "20%",
+    width: "80%",
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  buttonWrap: {
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

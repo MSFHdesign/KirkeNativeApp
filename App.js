@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import Intro from "./components/Pages/Intro";
 
 const App = () => {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
 
   useEffect(() => {
     const checkIntroSeen = async () => {
