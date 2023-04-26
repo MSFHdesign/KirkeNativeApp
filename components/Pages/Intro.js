@@ -6,7 +6,7 @@ import {
   ImageBackground,
   StyleSheet,
 } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 export default class Intro extends Component {
   state = {
@@ -36,7 +36,7 @@ export default class Intro extends Component {
   };
 
   handleSkipIntro = () => {
-    // Add your skip intro logic here
+    this.props.setShowIntro(false);
   };
 
   handleNext = () => {
@@ -46,7 +46,7 @@ export default class Intro extends Component {
       contents[currentContentIndex].completed = true;
       this.setState({ currentContentIndex: currentContentIndex + 1 });
     } else {
-      this.props.setShowIntro(false); //
+      this.props.setShowIntro(false); // End of index.
     }
   };
 
