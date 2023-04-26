@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FirebaseDisplay from "../fireBase/display";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Text, View } from "react-native";
 
 function DisplayPersonale() {
   const [selectedSuggestion, setSelectedSuggestion] = useState(null);
@@ -32,7 +33,15 @@ function DisplayPersonale() {
   }, [selectedSuggestion]);
 
   return (
-    <>{selectedSuggestion && <FirebaseDisplay dbName={selectedSuggestion} />}</>
+    <>
+      {selectedSuggestion === null ? (
+        <View>
+          <Text>vælg en kirkegård</Text>
+        </View>
+      ) : (
+        <FirebaseDisplay dbName={selectedSuggestion} />
+      )}
+    </>
   );
 }
 
