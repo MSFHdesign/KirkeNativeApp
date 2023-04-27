@@ -38,7 +38,7 @@ const FirebaseDisplay = ({ dbName }) => {
         const graveId = item.graveId;
         return (
           fullName.includes(searchQuery.toLowerCase()) ||
-          bornDate.toISOString().includes(searchQuery) ||
+          (bornDate && bornDate.toString().includes(searchQuery)) ||
           deathDate.toISOString().includes(searchQuery) ||
           (graveId && graveId.toString().includes(searchQuery))
         );
