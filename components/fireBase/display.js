@@ -14,6 +14,10 @@ import logo512 from "../../assets/logo512.png";
 import styles from "./Displaystyles.js";
 import Story from "./story";
 
+import Filter from "../../assets/Icons/filter.png";
+
+import buttonStyling from "../../Styles/ButtonStyling";
+
 const FirebaseDisplay = ({ dbName }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -91,53 +95,60 @@ const FirebaseDisplay = ({ dbName }) => {
           top: 0,
         }}
       >
-        <TextInput
-          onChangeText={(text) => setSearchQuery(text)}
-          style={styles.searchBar}
-          placeholder="Search for a name..."
-        />
-
-        <TouchableOpacity
-          onPress={() => setShowAll((prevShowAll) => !prevShowAll)}
-          style={styles.showAllButton}
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+            height: 100,
+          }}
         >
-          <Text style={styles.showAllButtonText}>
-            {showAll ? "Hide sorting options" : "Click to sort"}
-          </Text>
-        </TouchableOpacity>
+          <TextInput
+            onChangeText={(text) => setSearchQuery(text)}
+            style={styles.searchBar}
+            placeholder="Søg på navn..."
+          />
 
+          <TouchableOpacity
+            onPress={() => setShowAll((prevShowAll) => !prevShowAll)}
+            style={styles.showAllButton}
+          >
+            <Image source={Filter} style={styles.showAllButtonText} />
+          </TouchableOpacity>
+        </View>
         {showAll && (
-          <View style={styles.sortContainer}>
+          <View style={[styles.sortContainer]}>
             <TouchableOpacity
               onPress={() => handleSortPress("firstName")}
               style={styles.sortButton}
             >
-              <Text style={styles.sortButtonText}>Sort by First Name</Text>
+              <Text style={styles.sortButtonText}>Fornavn</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => handleSortPress("lastName")}
               style={styles.sortButton}
             >
-              <Text style={styles.sortButtonText}>Sort by Last Name</Text>
+              <Text style={styles.sortButtonText}>Efternavn</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => handleSortPress("born")}
               style={styles.sortButton}
             >
-              <Text style={styles.sortButtonText}>Sort by Birth Date</Text>
+              <Text style={styles.sortButtonText}>Født</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => handleSortPress("death")}
               style={styles.sortButton}
             >
-              <Text style={styles.sortButtonText}>Sort by Death Date</Text>
+              <Text style={styles.sortButtonText}>Død</Text>
             </TouchableOpacity>
           </View>
         )}
 
         {filteredData.length === 0 ? (
           <Text style={styles.noResultsText}>
-            Nothing to show, please try another search
+            Din søgning gav intet resaultat prøv igen.
           </Text>
         ) : (
           <FlatList
@@ -163,20 +174,30 @@ const FirebaseDisplay = ({ dbName }) => {
             keyExtractor={(item) => item.id}
             ListFooterComponent={
               filteredData.length > 10 && (
-                <TouchableOpacity
-                  onPress={() => setNumStoriesToShow(numStoriesToShow + 10)}
-                  style={styles.loadMoreButton}
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    width: "100%",
+                    alignItems: "center",
+                    paddingBottom: 50,
+                  }}
                 >
-                  {filteredData.length > numStoriesToShow ? (
-                    <Text style={styles.loadMoreButtonText}>
-                      Load More Stories
-                    </Text>
-                  ) : (
-                    <Text style={styles.loadMoreButtonText}>
-                      Ikke flere historier at hente
-                    </Text>
-                  )}
-                </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => setNumStoriesToShow(numStoriesToShow + 10)}
+                    style={buttonStyling.BoxNofill}
+                  >
+                    {filteredData.length > numStoriesToShow ? (
+                      <Text style={buttonStyling.TextNofill}>
+                        Load More Stories
+                      </Text>
+                    ) : (
+                      <Text style={buttonStyling.TextNofill}>
+                        Ikke flere historier at hente
+                      </Text>
+                    )}
+                  </TouchableOpacity>
+                </View>
               )
             }
           />
