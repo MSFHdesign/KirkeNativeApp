@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import buttonStyling from "../../Styles/ButtonStyling";
 import CustomHeader from "../Navigation/CustomHeader";
+
+//IKONER TIL ONBOARDING
 import Logo from "../../assets/logo192.png";
 
 export default class Intro extends Component {
@@ -26,23 +28,22 @@ export default class Intro extends Component {
         title: "Logo",
         picture: Logo,
         text: [
-          "Forsiden",
           "Tryk på logoet i top venstre hjørne for at komme tilbage til startskærmen.",
         ],
         completed: false,
       },
       {
         title: "Vælg en kirkegård",
+        picture: Logo,
         text: [
-          "Valg af kirkegård",
           "Ved at trykke på knappen øverste højre hjørne kan du vælge hvilken kirkegård du befinder dig på eller gerne vil besøge.",
         ],
         completed: false,
       },
       {
         title: "Tilføj historie",
+        picture: Logo,
         text: [
-          "Tilføj en historie.",
           "Inde på en historie kan du tilføje en lille ekstra historie om den begravede hvorefter den bliver sendt til godkendelse",
         ],
         completed: false,
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
   },
   textWrap: {
     width: "80%",
-    paddingTop: 10,
+    paddingTop: 70,
     justifyContent: "space-evenly",
     alignItems: "center",
   },
@@ -181,8 +182,12 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   text: {
+    paddingTop: 50,
+    lineHeight: 0,
     fontSize: 20,
   },
+
+  picture: {},
   progress: {
     flexDirection: "row",
     marginVertical: 20,
@@ -201,12 +206,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#889466",
   },
   buttons: {
-    gap: "20%",
     width: "80%",
     flexDirection: "row",
     justifyContent: "space-between",
   },
   buttonWrap: {
+    marginVertical: 20,
     justifyContent: "center",
     alignItems: "center",
   },
