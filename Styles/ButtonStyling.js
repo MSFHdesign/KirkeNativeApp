@@ -22,7 +22,7 @@ const buttonStyling = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 20,
     padding: 10,
-    width: "50%",
+    width: "52%",
     marginVertical: 10,
   },
   TextNofill: {
