@@ -15,6 +15,14 @@ const buttonStyling = StyleSheet.create({
     width: "65%",
     marginVertical: 10,
   },
+  BoxFill3: {
+    backgroundColor: "#889466",
+    borderRadius: 20,
+    padding: 10,
+    width: "45%",
+    marginVertical: 10,
+    maxHeight: 45,
+  },
   TextFill: {
     color: "#fff",
     fontSize: 16,
@@ -31,10 +39,19 @@ const buttonStyling = StyleSheet.create({
     width: "50%",
     marginVertical: 10,
   },
+  BoxNofill2: {
+    backgroundColor: "#fff",
+    borderColor: "#889466",
+    borderWidth: 2,
+    borderRadius: 20,
+    padding: 10,
+    width: "45%",
+    marginVertical: 10,
+    maxHeight: 45,
+  },
   TextNofill: {
     color: "black",
-
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
   },
