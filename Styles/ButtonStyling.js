@@ -2,16 +2,22 @@ import { StyleSheet } from "react-native";
 
 const buttonStyling = StyleSheet.create({
   BoxFill: {
-    marginLeft: 20,
     backgroundColor: "#889466",
     borderRadius: 20,
     padding: 10,
     width: "50%",
     marginVertical: 10,
   },
+  BoxFill2: {
+    backgroundColor: "#889466",
+    borderRadius: 20,
+    padding: 10,
+    width: "65%",
+    marginVertical: 10,
+  },
   TextFill: {
-    color: "#f2f2f2",
-    fontSize: 18,
+    color: "#fff",
+    fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
   },

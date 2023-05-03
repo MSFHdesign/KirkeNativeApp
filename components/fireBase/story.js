@@ -115,18 +115,32 @@ const Story = (props) => {
                     >
                       <Image source={arrowBack} style={styles.addStory} />
                     </TouchableOpacity>
-                    <Text>Titel</Text>
+                    <Text style={{ paddingLeft: 10 }}>Titel:</Text>
                     <TextInput
                       onChangeText={(text) => setSearchQuery(text)}
                       style={styles.addStoryTitle}
-                      placeholder="Search for a name..."
+                      placeholder="Giv din historien en titel..."
+                      placeholderTextColor={"black"}
                     />
-                    <Text>Skriv din historie:</Text>
+                    <Text style={{ paddingLeft: 10 }}>historie:</Text>
                     <TextInput
                       style={styles.addStoryDescription}
                       multiline={true}
-                      placeholder="Search for a name..."
+                      placeholder="Skriv din historie her..."
+                      placeholderTextColor={"black"}
                     />
+                    <View style={styles.approval}>
+                      <TouchableOpacity
+                        onPress={() =>
+                          setShowAll((prevShowAll) => !prevShowAll)
+                        }
+                        style={buttonStyling.BoxFill2}
+                      >
+                        <Text style={buttonStyling.TextFill}>
+                          Send til godkendelse
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </Modal>
               )}
@@ -159,6 +173,14 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     alignSelf: "center",
     borderRadius: 25,
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 4.59,
+    elevation: 5,
   },
   ScrollViewcontainer: {
     flex: 1,
@@ -236,7 +258,7 @@ const styles = StyleSheet.create({
   addStoryContainer: {
     backgroundColor: "white",
     minWidth: "90%",
-    minHeight: 542,
+    height: 542,
     marginTop: Constants.statusBarHeight + 80,
     marginBottom: 25,
     alignSelf: "center",
@@ -249,6 +271,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     padding: 10,
+    marginTop: 5,
+    marginBottom: 20,
   },
   addStoryDescription: {
     borderColor: "green",
@@ -256,8 +280,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     maxWidth: "90%",
-    minHeight: "50%",
+    minHeight: "40%",
+    marginTop: 5,
+    marginBottom: 10,
   },
+  approval: { alignItems: "center", margin: 0, padding: 0 },
 });
 
 export default Story;
