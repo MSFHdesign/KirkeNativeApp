@@ -3,6 +3,7 @@ import {
   Modal,
   View,
   Text,
+  TextInput,
   Image,
   StyleSheet,
   Pressable,
@@ -13,13 +14,14 @@ import {
 import logo512 from "../../assets/logo512.png";
 import addPlus from "../../assets/Icons/addPlus.png";
 import arrowBack from "../../assets/Icons/arrowback.png";
-import arrowBack2 from "../../assets/Icons/arrowback2.png";
 import Constants from "expo-constants";
 
 import buttonStyling from "../../Styles/ButtonStyling";
 const Story = (props) => {
   const { item, onClose } = props;
   const [showStory, setShowStory] = useState(false);
+  const [addStory, setAddStory] = useState(false);
+
   return (
     <>
       <View style={styles.container}>
@@ -34,10 +36,10 @@ const Story = (props) => {
       {showStory && (
         <Modal visible={true} animationType="slide" transparent={true}>
           <ImageBackground
-            source={require("../../assets/bg.png")}
-            resizeMode="cover"
+            source={require("../../assets/bg2.png")}
             style={{
               flex: 1,
+              marginTop: Constants.statusBarHeight + 80,
               position: "absolute",
               bottom: 0,
               left: 0,
@@ -50,7 +52,7 @@ const Story = (props) => {
                 style={styles.arrow}
                 onPress={() => setShowStory(false)}
               >
-                <Image source={arrowBack2} style={styles.addStory} />
+                <Image source={arrowBack} style={styles.addStory} />
               </TouchableOpacity>
               <ScrollView style={styles.ScrollViewcontainer}>
                 <Text style={styles.name}>
@@ -76,10 +78,58 @@ const Story = (props) => {
                       </Text>
                     </View>
                   ))}
+                <View
+                  style={{
+                    borderBottomColor: "black",
+                    borderBottomWidth: StyleSheet.hairlineWidth,
+                    marginVertical: 20,
+                  }}
+                >
+                  <Text style={styles.commentSectionText}>
+                    Historier fra andre brugere
+                  </Text>
+                </View>
+                <View style={styles.commentSection}>
+                  {item.comments &&
+                    item.comments.map((comments, index) => (
+                      <View key={index} style={styles.comment}>
+                        <Text style={styles.commentTitle}>
+                          {comments.title}
+                        </Text>
+                        <Text style={styles.commentDescription}>
+                          {comments.comment}
+                        </Text>
+                      </View>
+                    ))}
+                </View>
               </ScrollView>
-              <Pressable onPress={() => setShowStory(false)}>
+              <Pressable onPress={() => setAddStory(true)}>
                 <Image source={addPlus} style={styles.addStory} />
               </Pressable>
+              {addStory && (
+                <Modal visible={true} animationType="slide" transparent={true}>
+                  <View style={styles.addStoryContainer}>
+                    <TouchableOpacity
+                      style={styles.arrow}
+                      onPress={() => setAddStory(false)}
+                    >
+                      <Image source={arrowBack} style={styles.addStory} />
+                    </TouchableOpacity>
+                    <Text>Titel</Text>
+                    <TextInput
+                      onChangeText={(text) => setSearchQuery(text)}
+                      style={styles.addStoryTitle}
+                      placeholder="Search for a name..."
+                    />
+                    <Text>Skriv din historie:</Text>
+                    <TextInput
+                      style={styles.addStoryDescription}
+                      multiline={true}
+                      placeholder="Search for a name..."
+                    />
+                  </View>
+                </Modal>
+              )}
             </View>
           </ImageBackground>
         </Modal>
@@ -94,17 +144,18 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   arrow: {
-    margin: 20,
+    marginLeft: 30,
+    marginTop: 20,
     width: 40,
     height: 40,
     position: "absolute",
+    zIndex: 1,
   },
   storyContainer: {
     backgroundColor: "white",
     minWidth: "90%",
     marginRight: 25,
     marginLeft: 25,
-    marginTop: Constants.statusBarHeight + 80,
     marginBottom: 25,
     alignSelf: "center",
     borderRadius: 25,
@@ -112,8 +163,7 @@ const styles = StyleSheet.create({
   ScrollViewcontainer: {
     flex: 1,
     padding: 20,
-    paddingBottom: 50,
-    marginBottom: 30,
+    marginBottom: 10,
   },
   name: {
     fontSize: 24,
@@ -137,7 +187,6 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     alignSelf: "center",
   },
-
   sectionTitle: {
     fontSize: 20,
     fontWeight: "bold",
@@ -148,6 +197,35 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 20,
   },
+  commentSectionText: { marginBottom: 5, fontSize: 16, fontWeight: "bold" },
+  commentSection: { marginBottom: 20 },
+  comment: {
+    width: "100%",
+    flex: 1,
+    alignSelf: "center",
+    borderRadius: 20,
+    backgroundColor: "#ffffff",
+    marginBottom: 15,
+    paddingHorizontal: 8,
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 4.59,
+    elevation: 5,
+  },
+  commentTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 10,
+    marginBottom: 5,
+  },
+  commentDescription: {
+    fontSize: 14,
+    marginBottom: 20,
+  },
   closeButton: {
     fontSize: 18,
     fontWeight: "bold",
@@ -155,6 +233,31 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   addStory: { height: 50, width: 50, alignSelf: "center", marginBottom: 10 },
+  addStoryContainer: {
+    backgroundColor: "white",
+    minWidth: "90%",
+    minHeight: 542,
+    marginTop: Constants.statusBarHeight + 80,
+    marginBottom: 25,
+    alignSelf: "center",
+    borderRadius: 25,
+    paddingTop: 80,
+    padding: 20,
+  },
+  addStoryTitle: {
+    borderColor: "green",
+    borderWidth: 1,
+    borderRadius: 20,
+    padding: 10,
+  },
+  addStoryDescription: {
+    borderColor: "green",
+    borderWidth: 1,
+    borderRadius: 20,
+    padding: 10,
+    maxWidth: "90%",
+    minHeight: "50%",
+  },
 });
 
 export default Story;

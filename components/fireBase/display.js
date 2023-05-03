@@ -81,7 +81,6 @@ const FirebaseDisplay = ({ dbName }) => {
     <View style={styles.container}>
       <ImageBackground
         source={require("../../assets/bg.png")}
-        resizeMode="cover"
         style={{
           flex: 1,
           position: "absolute",
