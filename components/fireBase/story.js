@@ -15,14 +15,16 @@ import logo512 from "../../assets/logo512.png";
 import addPlus from "../../assets/Icons/addPlus.png";
 import arrowBack from "../../assets/Icons/arrowback.png";
 import Constants from "expo-constants";
-
 import buttonStyling from "../../Styles/ButtonStyling";
+import { useNavigation } from "@react-navigation/native";
+import LastPopUp from "./popup";
 const Story = (props) => {
   const { item, onClose } = props;
+  const navigation = useNavigation();
   const [showStory, setShowStory] = useState(false);
   const [addStory, setAddStory] = useState(false);
   const [openPopUp, setOpenPopUp] = useState(false);
-
+  const [confirmationPopUp, setConfirmationPopUp] = useState(false);
   return (
     <>
       <View style={styles.container}>
@@ -140,45 +142,108 @@ const Story = (props) => {
                         </Text>
                       </TouchableOpacity>
                     </View>
-                  </View>
-                </Modal>
-              )}
-              {openPopUp && (
-                <Modal visible={true} animationType="fade" transparent={true}>
-                  <View style={styles.popUpContainer}>
-                    <View style={styles.popUpContent}>
-                      <View>
-                        <Text
-                          style={{
-                            fontWeight: "bold",
-                            fontSize: 20,
-                            textAlign: "center",
-                          }}
-                        >
-                          har du husket:
-                        </Text>
-                        <Text style={{ fontSize: 16, textAlign: "center" }}>
-                          * At holde den gode tone?
-                        </Text>
-                        <Text style={{ fontSize: 16, textAlign: "center" }}>
-                          * At andre kan læse historien
-                        </Text>
-                      </View>
-                      <View style={styles.popupButtons}>
-                        <TouchableOpacity
-                          onPress={() => setOpenPopUp(false)}
-                          style={buttonStyling.BoxNofill2}
-                        >
-                          <Text style={buttonStyling.TextNofill}>Nej</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                          onPress={() => setOpenPopUp(true)}
-                          style={buttonStyling.BoxFill3}
-                        >
-                          <Text style={buttonStyling.TextFill}>Ja</Text>
-                        </TouchableOpacity>
-                      </View>
-                    </View>
+                    {openPopUp && (
+                      <Modal
+                        visible={true}
+                        animationType="fade"
+                        transparent={true}
+                      >
+                        <View style={styles.popUpContainer}>
+                          <View style={styles.popUpContent}>
+                            <View>
+                              <Text
+                                style={{
+                                  fontWeight: "bold",
+                                  fontSize: 20,
+                                  textAlign: "center",
+                                }}
+                              >
+                                har du husket:
+                              </Text>
+                              <Text
+                                style={{ fontSize: 16, textAlign: "center" }}
+                              >
+                                * At holde den gode tone?
+                              </Text>
+                              <Text
+                                style={{ fontSize: 16, textAlign: "center" }}
+                              >
+                                * At andre kan læse historien
+                              </Text>
+                            </View>
+                            <View style={styles.popupButtons}>
+                              <TouchableOpacity
+                                onPress={() => setOpenPopUp(false)}
+                                style={buttonStyling.BoxNofill2}
+                              >
+                                <Text style={buttonStyling.TextNofill}>
+                                  Nej
+                                </Text>
+                              </TouchableOpacity>
+                              <TouchableOpacity
+                                onPress={() => setConfirmationPopUp(true)}
+                                style={buttonStyling.BoxFill3}
+                              >
+                                <Text style={buttonStyling.TextFill}>Ja</Text>
+                              </TouchableOpacity>
+                            </View>
+                          </View>
+                          {confirmationPopUp && (
+                            <Modal
+                              visible={true}
+                              animationType="fade"
+                              transparent={true}
+                            >
+                              <View style={styles.popUpContainer}>
+                                <View style={styles.popUpContent}>
+                                  <View>
+                                    <Text
+                                      style={{
+                                        fontWeight: "bold",
+                                        fontSize: 20,
+                                        textAlign: "center",
+                                      }}
+                                    >
+                                      Historien er sendt til godkendelse
+                                    </Text>
+                                  </View>
+                                  <View style={styles.popupButtons}>
+                                    <TouchableOpacity
+                                      onPress={() =>
+                                        navigation.navigate("home") ||
+                                        setConfirmationPopUp(false) ||
+                                        setOpenPopUp(false) ||
+                                        setAddStory(false) ||
+                                        setShowStory(false)
+                                      }
+                                      style={buttonStyling.BoxNofill2}
+                                    >
+                                      <Text style={buttonStyling.TextNofill}>
+                                        Til forsiden
+                                      </Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                      onPress={() =>
+                                        navigation.navigate("Personlige") ||
+                                        setConfirmationPopUp(false) ||
+                                        setOpenPopUp(false) ||
+                                        setAddStory(false) ||
+                                        setShowStory(false)
+                                      }
+                                      style={buttonStyling.BoxFill3}
+                                    >
+                                      <Text style={buttonStyling.TextFill}>
+                                        Til historierne
+                                      </Text>
+                                    </TouchableOpacity>
+                                  </View>
+                                </View>
+                              </View>
+                            </Modal>
+                          )}
+                        </View>
+                      </Modal>
+                    )}
                   </View>
                 </Modal>
               )}
@@ -348,7 +413,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   popupButtons: {
-    width: "90%",
+    width: "95%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignContent: "space-between",
