@@ -17,7 +17,6 @@ import arrowBack from "../../assets/Icons/arrowback.png";
 import Constants from "expo-constants";
 import buttonStyling from "../../Styles/ButtonStyling";
 import { useNavigation } from "@react-navigation/native";
-import LastPopUp from "./popup";
 const Story = (props) => {
   const { item, onClose } = props;
   const navigation = useNavigation();
