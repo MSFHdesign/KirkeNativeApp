@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
       height: 4,
     },
     shadowRadius: 4,
-    shadowOpacity: 1,
+    shadowOpacity: 0.5,
   },
   textWrap: {
     width: "80%",

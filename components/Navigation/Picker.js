@@ -14,7 +14,7 @@ import Constants from "expo-constants";
 import buttonStyling from "../../Styles/ButtonStyling";
 
 const SearchBar = ({ isVisible, onClose = () => {} }) => {
-  const [selectedOption, setSelectedOption] = useState("Vælg kirkegård");
+  const [selectedOption, setSelectedOption] = useState("Søg på kirkegård");
   const [placeholderText, setPlaceholderText] = useState(
     "Søg efter en kirkegård"
   );
@@ -24,8 +24,8 @@ const SearchBar = ({ isVisible, onClose = () => {} }) => {
     const retrieveSelectedOption = async () => {
       const value = await AsyncStorage.getItem("selectedOption");
       if (value !== selectedOption) {
-        setSelectedOption(value || "Vælg kirkegård"); // set default value if value is null or undefined
-        setPlaceholderText(value || "Vælg kirkegård"); // set default value if value is null or undefined
+        setSelectedOption(value || "Søg på kirkegård"); // set default value if value is null or undefined
+        setPlaceholderText(value || "Søg på kirkegård"); // set default value if value is null or undefined
       }
     };
 
