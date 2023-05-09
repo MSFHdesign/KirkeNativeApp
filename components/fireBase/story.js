@@ -18,6 +18,7 @@ import Constants from "expo-constants";
 import buttonStyling from "../../Styles/ButtonStyling";
 import { useNavigation } from "@react-navigation/native";
 import AddStoryPopUp from "./addStory";
+import FirstPopUp from "./ShowStoryPopUp";
 
 const Story = (props) => {
   const { item, onClose } = props;
@@ -36,7 +37,6 @@ const Story = (props) => {
           <Text style={buttonStyling.TextNofill}>Læs</Text>
         </Pressable>
       </View>
-      {/*  */}
       {showStory && (
         <Modal visible={true} animationType="slide" transparent={true}>
           <ImageBackground
@@ -113,7 +113,7 @@ const Story = (props) => {
               {addStory && (
                 <Modal visible={true} animationType="slide" transparent={true}>
                   <View style={styles.addStoryContainer}>
-                    <AddStoryPopUp />
+                    <AddStoryPopUp test={addStory} />
                     {openPopUp && (
                       <Modal
                         visible={true}
@@ -121,45 +121,7 @@ const Story = (props) => {
                         transparent={true}
                       >
                         <View style={styles.popUpContainer}>
-                          <View style={styles.popUpContent}>
-                            <View>
-                              <Text
-                                style={{
-                                  fontWeight: "bold",
-                                  fontSize: 20,
-                                  textAlign: "center",
-                                }}
-                              >
-                                har du husket:
-                              </Text>
-                              <Text
-                                style={{ fontSize: 16, textAlign: "center" }}
-                              >
-                                * At holde den gode tone?
-                              </Text>
-                              <Text
-                                style={{ fontSize: 16, textAlign: "center" }}
-                              >
-                                * At andre kan læse historien
-                              </Text>
-                            </View>
-                            <View style={styles.popupButtons}>
-                              <TouchableOpacity
-                                onPress={() => setOpenPopUp(false)}
-                                style={buttonStyling.BoxNofill2}
-                              >
-                                <Text style={buttonStyling.TextNofill}>
-                                  Nej
-                                </Text>
-                              </TouchableOpacity>
-                              <TouchableOpacity
-                                onPress={() => setConfirmationPopUp(true)}
-                                style={buttonStyling.BoxFill3}
-                              >
-                                <Text style={buttonStyling.TextFill}>Ja</Text>
-                              </TouchableOpacity>
-                            </View>
-                          </View>
+                          <FirstPopUp />
                           {confirmationPopUp && (
                             <Modal
                               visible={true}

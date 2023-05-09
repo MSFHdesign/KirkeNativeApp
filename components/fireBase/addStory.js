@@ -8,10 +8,10 @@ import {
 } from "react-native";
 import arrowBack from "../../assets/Icons/arrowback.png";
 import buttonStyling from "../../Styles/ButtonStyling";
-const AddStoryPopUp = () => {
+const AddStoryPopUp = (props) => {
   return (
     <View>
-      {/* <TouchableOpacity style={styles.arrow} onPress={() => setAddStory(false)}>
+      <TouchableOpacity style={styles.arrow} onPress={() => setAddStory(false)}>
         <Image source={arrowBack} style={styles.addStory} />
       </TouchableOpacity>
       <Text style={{ paddingLeft: 10 }}>Titel:</Text>
@@ -35,8 +35,7 @@ const AddStoryPopUp = () => {
         >
           <Text style={buttonStyling.TextFill}>Send til godkendelse</Text>
         </TouchableOpacity>
-      </View> */}
-      <Text>hej</Text>
+      </View>
     </View>
   );
 };
@@ -63,4 +62,4 @@ const styles = StyleSheet.create({
   approval: { alignItems: "center", margin: 0, padding: 0 },
 });
 
-export default AddStoryPopUp();
+export default AddStoryPopUp;
