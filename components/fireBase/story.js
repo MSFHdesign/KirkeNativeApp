@@ -55,7 +55,7 @@ const Story = (props) => {
                 style={openStoryStyling.arrow}
                 onPress={() => setShowStory(false)}
               >
-                <Image source={arrowBack} style={openStoryStyling.addStory} />
+                <Image source={arrowBack} style={openStoryStyling.arrow} />
               </TouchableOpacity>
               <ScrollView style={openStoryStyling.ScrollViewcontainer}>
                 <Text style={openStoryStyling.name}>

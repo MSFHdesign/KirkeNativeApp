@@ -13,7 +13,6 @@ const AddStoryPopUp = ({ openSetAddStory, openSetOpenPopUp }) => {
       </TouchableOpacity>
       <Text style={{ paddingLeft: 10 }}>Titel:</Text>
       <TextInput
-        onChangeText={(text) => setSearchQuery(text)}
         style={openStoryStyling.addStoryTitle}
         placeholder="Giv din historien en titel..."
         placeholderTextColor={"black"}
