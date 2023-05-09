@@ -8,10 +8,14 @@ import {
 } from "react-native";
 import arrowBack from "../../assets/Icons/arrowback.png";
 import buttonStyling from "../../Styles/ButtonStyling";
-const AddStoryPopUp = (props) => {
+const AddStoryPopUp = (openSetAddStory, openSetOpenPopUp) => {
+  const HandleClick = () => {};
   return (
     <View>
-      <TouchableOpacity style={styles.arrow} onPress={() => setAddStory(false)}>
+      <TouchableOpacity
+        style={styles.arrow}
+        onPress={() => openSetAddStory.setAddStory(false)}
+      >
         <Image source={arrowBack} style={styles.addStory} />
       </TouchableOpacity>
       <Text style={{ paddingLeft: 10 }}>Titel:</Text>

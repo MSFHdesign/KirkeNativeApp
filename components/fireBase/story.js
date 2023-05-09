@@ -113,7 +113,10 @@ const Story = (props) => {
               {addStory && (
                 <Modal visible={true} animationType="slide" transparent={true}>
                   <View style={styles.addStoryContainer}>
-                    <AddStoryPopUp test={addStory} />
+                    <AddStoryPopUp
+                      openSetAddStory={setAddStory}
+                      openSetOpenPopUp={setOpenPopUp}
+                    />
                     {openPopUp && (
                       <Modal
                         visible={true}
