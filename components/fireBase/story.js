@@ -17,6 +17,8 @@ import arrowBack from "../../assets/Icons/arrowback.png";
 import Constants from "expo-constants";
 import buttonStyling from "../../Styles/ButtonStyling";
 import { useNavigation } from "@react-navigation/native";
+import AddStoryPopUp from "./addStory";
+
 const Story = (props) => {
   const { item, onClose } = props;
   const navigation = useNavigation();
@@ -34,7 +36,7 @@ const Story = (props) => {
           <Text style={buttonStyling.TextNofill}>Læs</Text>
         </Pressable>
       </View>
-
+      {/*  */}
       {showStory && (
         <Modal visible={true} animationType="slide" transparent={true}>
           <ImageBackground
@@ -111,36 +113,7 @@ const Story = (props) => {
               {addStory && (
                 <Modal visible={true} animationType="slide" transparent={true}>
                   <View style={styles.addStoryContainer}>
-                    <TouchableOpacity
-                      style={styles.arrow}
-                      onPress={() => setAddStory(false)}
-                    >
-                      <Image source={arrowBack} style={styles.addStory} />
-                    </TouchableOpacity>
-                    <Text style={{ paddingLeft: 10 }}>Titel:</Text>
-                    <TextInput
-                      onChangeText={(text) => setSearchQuery(text)}
-                      style={styles.addStoryTitle}
-                      placeholder="Giv din historien en titel..."
-                      placeholderTextColor={"black"}
-                    />
-                    <Text style={{ paddingLeft: 10 }}>historie:</Text>
-                    <TextInput
-                      style={styles.addStoryDescription}
-                      multiline={true}
-                      placeholder="Skriv din historie her..."
-                      placeholderTextColor={"black"}
-                    />
-                    <View style={styles.approval}>
-                      <TouchableOpacity
-                        onPress={() => setOpenPopUp(true)}
-                        style={buttonStyling.BoxFill2}
-                      >
-                        <Text style={buttonStyling.TextFill}>
-                          Send til godkendelse
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
+                    <AddStoryPopUp />
                     {openPopUp && (
                       <Modal
                         visible={true}
