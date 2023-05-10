@@ -2,16 +2,30 @@ import { StyleSheet } from "react-native";
 
 const buttonStyling = StyleSheet.create({
   BoxFill: {
-    marginLeft: 20,
     backgroundColor: "#889466",
     borderRadius: 20,
     padding: 10,
     width: "50%",
     marginVertical: 10,
   },
+  BoxFill2: {
+    backgroundColor: "#889466",
+    borderRadius: 20,
+    padding: 10,
+    width: "75%",
+    marginVertical: 10,
+  },
+  BoxFill3: {
+    backgroundColor: "#889466",
+    borderRadius: 20,
+    padding: 10,
+    width: "48%",
+    marginVertical: 10,
+    maxHeight: 45,
+  },
   TextFill: {
-    color: "#f2f2f2",
-    fontSize: 18,
+    color: "#fff",
+    fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
   },
@@ -25,10 +39,19 @@ const buttonStyling = StyleSheet.create({
     width: "52%",
     marginVertical: 10,
   },
+  BoxNofill2: {
+    backgroundColor: "#fff",
+    borderColor: "#889466",
+    borderWidth: 2,
+    borderRadius: 20,
+    padding: 10,
+    width: "48%",
+    marginVertical: 10,
+    maxHeight: 45,
+  },
   TextNofill: {
     color: "black",
-
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
   },
