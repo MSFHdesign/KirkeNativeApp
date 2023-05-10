@@ -26,6 +26,9 @@ const Story = (props) => {
   const [addStory, setAddStory] = useState(false);
   const [openPopUp, setOpenPopUp] = useState(false);
   const [confirmationPopUp, setConfirmationPopUp] = useState(false);
+  const [title, setTitle] = useState();
+  const [comment, setComment] = useState();
+  const [storyID, setStoryID] = useState();
   return (
     <>
       <View style={openStoryStyling.container}>
@@ -133,6 +136,12 @@ const Story = (props) => {
                     <AddStoryPopUp
                       openSetAddStory={setAddStory}
                       openSetOpenPopUp={setOpenPopUp}
+                      addTitleText={setTitle}
+                      addTitleValue={title}
+                      addCommentValue={comment}
+                      addCommentText={setComment}
+                      setStoryID={setStoryID}
+                      item={item}
                     />
                     {openPopUp && (
                       <Modal
@@ -144,6 +153,11 @@ const Story = (props) => {
                           <FirstPopUp
                             openSetOpenPopUp={setOpenPopUp}
                             openConfirmPopUp={setConfirmationPopUp}
+                            addTitleValue={title}
+                            addCommentValue={comment}
+                            setStoryID={storyID}
+                            addTitleText={setTitle}
+                            addCommentText={setComment}
                           />
                           {confirmationPopUp && (
                             <Modal

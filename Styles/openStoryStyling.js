@@ -194,6 +194,11 @@ const openStoryStyling = StyleSheet.create({
     justifyContent: "space-between",
     alignContent: "space-between",
   },
+  popupButton: {
+    width: "95%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
 });
 
 export default openStoryStyling;
