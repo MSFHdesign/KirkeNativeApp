@@ -166,8 +166,12 @@ const FirebaseDisplay = ({ dbName }) => {
                 </Text>
 
                 <Text style={styles.GraveId}>Grav nummer: {item.graveId}</Text>
-                <Text style={styles.born}>Født: {item.born}</Text>
-                <Text style={styles.death}>Afgået: {item.death}</Text>
+                <Text style={styles.born}>
+                  <Text style={styles.star}>☆</Text> {item.born}
+                </Text>
+                <Text style={styles.death}>
+                  <Text style={styles.cross}>✞</Text> {item.death}
+                </Text>
                 <Story item={item} />
               </View>
             )}

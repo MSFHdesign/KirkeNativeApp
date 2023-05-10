@@ -31,6 +31,13 @@ const styles = StyleSheet.create({
   },
   death: {
     marginTop: 10,
+    paddingLeft: 4,
+  },
+  star: { fontSize: 18, minWidth: 100, alignSelf: "center" },
+  cross: {
+    fontSize: 20,
+    minWidth: 100,
+    alignSelf: "center",
   },
   sectionTitle: {
     marginTop: 10,
