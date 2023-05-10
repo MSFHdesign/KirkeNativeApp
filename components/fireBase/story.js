@@ -62,7 +62,15 @@ const Story = (props) => {
                   {item.firstName} {item.lastName}
                 </Text>
                 <Text style={openStoryStyling.dates}>
-                  {item.born} - {item.death}
+                  <Text style={openStoryStyling.born}>
+                    <Text style={openStoryStyling.starSymbol}>☆ </Text>
+                    {item.born} -
+                  </Text>
+
+                  <Text style={openStoryStyling.dead}>
+                    <Text style={openStoryStyling.crossSymbol}> ✞ </Text>
+                    {item.death}
+                  </Text>
                 </Text>
                 <Text style={openStoryStyling.graveId}>
                   gravnr: {item.graveId}

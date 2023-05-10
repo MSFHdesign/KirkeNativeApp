@@ -33,11 +33,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingLeft: 4,
   },
-  star: { fontSize: 18, minWidth: 100, alignSelf: "center" },
+  star: { fontSize: 18 },
   cross: {
     fontSize: 20,
-    minWidth: 100,
-    alignSelf: "center",
   },
   sectionTitle: {
     marginTop: 10,
