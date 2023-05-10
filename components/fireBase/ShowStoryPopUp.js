@@ -31,7 +31,7 @@ export default function FirstPopUp({
   const addComment = async () => {
     try {
       const docRef = await addDoc(
-        collection(db, "ToApprove", "DB", selectedOption),
+        collection(db, "ToApprove", selectedOption, "Comments"),
         {
           title: addTitleValue,
           comment: addCommentValue,

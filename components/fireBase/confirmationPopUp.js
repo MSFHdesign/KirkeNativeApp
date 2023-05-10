@@ -42,8 +42,7 @@ export default function confirmationPopUp({
             navigation.navigate("Personlige") ||
             openConfirmPopUp(false) ||
             openSetOpenPopUp(false) ||
-            openSetAddStory(false) ||
-            openStoryPopUp(false)
+            openSetAddStory(false)
           }
           style={buttonStyling.BoxFill3}
         >
