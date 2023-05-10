@@ -12,7 +12,7 @@ const buttonStyling = StyleSheet.create({
     backgroundColor: "#889466",
     borderRadius: 20,
     padding: 10,
-    width: "65%",
+    width: "75%",
     marginVertical: 10,
   },
   BoxFill3: {

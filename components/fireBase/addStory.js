@@ -1,4 +1,11 @@
-import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+} from "react-native";
 import arrowBack from "../../assets/Icons/arrowback.png";
 import buttonStyling from "../../Styles/ButtonStyling";
 import openStoryStyling from "../../Styles/openStoryStyling";
@@ -21,6 +28,7 @@ const AddStoryPopUp = ({ openSetAddStory, openSetOpenPopUp }) => {
       <TextInput
         style={openStoryStyling.addStoryDescription}
         multiline={true}
+        maxLength={1000}
         placeholder="Skriv din historie her..."
         placeholderTextColor={"black"}
       />

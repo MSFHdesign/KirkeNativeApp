@@ -114,11 +114,14 @@ const Story = (props) => {
                 </View>
               </ScrollView>
               <Pressable onPress={() => setAddStory(true)}>
-                <Image source={addPlus} style={openStoryStyling.addStory} />
+                <Image
+                  source={addPlus}
+                  style={openStoryStyling.addStoryButton}
+                />
               </Pressable>
               {addStory && (
                 <Modal visible={true} animationType="slide" transparent={true}>
-                  <View>
+                  <View style={openStoryStyling.addStory}>
                     <AddStoryPopUp
                       openSetAddStory={setAddStory}
                       openSetOpenPopUp={setOpenPopUp}
