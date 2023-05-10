@@ -47,10 +47,13 @@ const openStoryStyling = StyleSheet.create({
     alignSelf: "center",
   },
   dates: {
-    fontSize: 16,
     marginBottom: 5,
     textAlign: "center",
   },
+  born: { fontSize: 16 },
+  dead: { fontSize: 16 },
+  starSymbol: { fontSize: 18 },
+  crossSymbol: { fontSize: 20 },
   graveId: {
     fontSize: 16,
     marginBottom: 20,
