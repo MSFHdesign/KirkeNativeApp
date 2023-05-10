@@ -39,7 +39,6 @@ export default function confirmationPopUp({
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate("Personlige") ||
             openConfirmPopUp(false) ||
             openSetOpenPopUp(false) ||
             openSetAddStory(false)
