@@ -179,11 +179,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   headText: {
+    color: "black",
     fontSize: 30,
   },
   text: {
+    color: "black",
     paddingTop: 50,
-    lineHeight: 0,
     fontSize: 20,
   },
 
