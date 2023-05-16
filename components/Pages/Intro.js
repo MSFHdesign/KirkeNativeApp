@@ -12,6 +12,8 @@ import CustomHeader from "../Navigation/CustomHeader";
 
 //IKONER TIL ONBOARDING
 import Logo from "../../assets/logo192.png";
+import addPlus from "../../assets/addPlus.png";
+import kirkegaard from "../../assets/kirkegaard.png";
 
 export default class Intro extends Component {
   state = {
@@ -34,7 +36,7 @@ export default class Intro extends Component {
       },
       {
         title: "Vælg en kirkegård",
-        picture: Logo,
+        picture: kirkegaard,
         text: [
           "Ved at trykke på knappen øverste højre hjørne kan du vælge hvilken kirkegård du befinder dig på eller gerne vil besøge.",
         ],
@@ -42,7 +44,7 @@ export default class Intro extends Component {
       },
       {
         title: "Tilføj historie",
-        picture: Logo,
+        picture: addPlus,
         text: [
           "Inde på en historie kan du tilføje en lille ekstra historie om den begravede hvorefter den bliver sendt til godkendelse",
         ],
