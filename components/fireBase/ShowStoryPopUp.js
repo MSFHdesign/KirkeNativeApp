@@ -14,6 +14,8 @@ export default function FirstPopUp({
   setStoryID,
   addTitleText,
   addCommentText,
+  firstName,
+  lastName,
 }) {
   const [selectedOption, setSelectedOption] = useState("");
   useEffect(() => {
@@ -36,6 +38,8 @@ export default function FirstPopUp({
           title: addTitleValue,
           comment: addCommentValue,
           storyID: setStoryID,
+          firstName: firstName,
+          lastName: lastName,
         },
         addCommentText(""),
         addTitleText("")
