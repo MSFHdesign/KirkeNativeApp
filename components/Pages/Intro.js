@@ -12,9 +12,8 @@ import CustomHeader from "../Navigation/CustomHeader";
 
 //IKONER TIL ONBOARDING
 import Logo from "../../assets/logo192.png";
-import addPlus from "../../assets/addPlus.png";
-import kirkegaard from "../../assets/kirkegaard.png";
-
+import addPlus from "../../assets/Icons/addPlus.png";
+import picker from "../../assets/kirkegaard.png";
 export default class Intro extends Component {
   state = {
     currentContentIndex: 0,
@@ -36,7 +35,7 @@ export default class Intro extends Component {
       },
       {
         title: "Vælg en kirkegård",
-        picture: kirkegaard,
+        picture: picker,
         text: [
           "Ved at trykke på knappen øverste højre hjørne kan du vælge hvilken kirkegård du befinder dig på eller gerne vil besøge.",
         ],
@@ -90,6 +89,7 @@ export default class Intro extends Component {
                 <Image
                   source={contents[currentContentIndex].picture}
                   style={styles.picture}
+                  resizeMode="contain"
                 />
               ) : (
                 <Text style={styles.headText}>
@@ -190,7 +190,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 
-  picture: {},
+  picture: {
+    width: '70%'
+  },
   progress: {
     flexDirection: "row",
     marginVertical: 20,
