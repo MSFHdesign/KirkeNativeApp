@@ -96,11 +96,10 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingVertical: 20,
   },
   cardTitle: {
-    fontSize: 18,
-    marginBottom: 10,
+    fontSize: 20,
     color: "white",
     fontWeight: "bold",
   },
