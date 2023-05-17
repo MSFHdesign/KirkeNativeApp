@@ -110,7 +110,7 @@ export default class Intro extends Component {
                 ) : (
                   <>
                     <Pressable
-                      style={buttonStyling.BoxNofill}
+                      style={buttonStyling.BoxNofill2}
                       onPress={this.handleSkipIntro}
                     >
                       <Text style={buttonStyling.TextNofill}>Skip Intro</Text>
@@ -118,7 +118,7 @@ export default class Intro extends Component {
                   </>
                 )}
                 <Pressable
-                  style={buttonStyling.BoxFill}
+                  style={buttonStyling.BoxFill3}
                   onPress={this.handleNext}
                 >
                   <Text style={buttonStyling.TextFill}>
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   },
 
   picture: {
-    width: '70%'
+    width: "70%",
   },
   progress: {
     flexDirection: "row",
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
   buttons: {
     width: "80%",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
   },
   buttonWrap: {
     marginVertical: 20,

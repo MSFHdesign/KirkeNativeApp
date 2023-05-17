@@ -22,16 +22,24 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
   },
   name: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "bold",
     textTransform: "capitalize",
   },
+  GraveId: { fontSize: 16 },
+  dates: {
+    display: "flex",
+    flexDirection: "row",
+  },
   born: {
     marginTop: 10,
+    marginRight: 5,
+    fontSize: 16,
   },
   death: {
     marginTop: 10,
     paddingLeft: 4,
+    fontSize: 16,
   },
   star: { fontSize: 18 },
   cross: {
@@ -47,6 +55,8 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 100,
+    marginBottom: 10,
+    alignSelf: "center",
   },
   searchBar: {
     height: 50,

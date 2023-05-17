@@ -29,16 +29,22 @@ function HomeScreen({ navigation }) {
           <Text style={styles.title}>Velkommen til Kirkeappen</Text>
 
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>Lokal historie</Text>
-            <Text style={styles.cardText}>
-              Vidste du at lokale er fyldt med lokal historie?
-            </Text>
-            <Pressable
-              onPress={() => navigation.navigate("Personlige")}
-              style={ButtonStyle.BoxFill}
-            >
-              <Text style={ButtonStyle.TextFill}> Læs mere</Text>
-            </Pressable>
+            <View style={styles.titlebg}>
+              <Text style={styles.cardTitle}>Lokal historie</Text>
+            </View>
+            <View style={styles.cardContent}>
+              <Text style={styles.cardText}>
+                Vidste du at lokale er fyldt med lokal historie?
+              </Text>
+              <View style={styles.centeringBottom}>
+                <Pressable
+                  onPress={() => navigation.navigate("Personlige")}
+                  style={ButtonStyle.BoxFill}
+                >
+                  <Text style={ButtonStyle.TextFill}> Læs mere</Text>
+                </Pressable>
+              </View>
+            </View>
           </View>
           {/* SLET MIG */}
           <View style={styles.card}>
@@ -64,6 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
   title: {
     fontSize: 24,
     fontWeight: "bold",
@@ -72,19 +79,40 @@ const styles = StyleSheet.create({
   },
   card: {
     width: "80%",
-    borderWidth: 1,
-    borderRadius: 10,
-    padding: 20,
+    borderRadius: 25,
     marginBottom: 20,
     backgroundColor: "white",
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 4.59,
+    elevation: 5,
+  },
+  titlebg: {
+    backgroundColor: "#889466",
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
   },
   cardTitle: {
     fontSize: 18,
     marginBottom: 10,
+    color: "white",
     fontWeight: "bold",
   },
+  cardContent: { paddingHorizontal: 20, paddingVertical: 10 },
   cardText: {
     marginBottom: 20,
+  },
+  centeringBottom: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "row",
   },
   backgroundImage: {
     flex: 1,

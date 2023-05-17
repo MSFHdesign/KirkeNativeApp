@@ -155,7 +155,11 @@ const FirebaseDisplay = ({ dbName }) => {
             renderItem={({ item }) => (
               <View style={styles.itemContainer}>
                 {item.imageUrl ? (
-                  <Image source={{ uri: item.imageUrl }} style={styles.image} />
+                  <Image
+                    source={{ uri: item.imageUrl }}
+                    style={styles.image}
+                    resizeMode="contain"
+                  />
                 ) : (
                   <Image source={logo512} style={styles.image} />
                 )}
@@ -165,12 +169,14 @@ const FirebaseDisplay = ({ dbName }) => {
                 </Text>
 
                 <Text style={styles.GraveId}>Grav nummer: {item.graveId}</Text>
-                <Text style={styles.born}>
-                  <Text style={styles.star}>☆</Text> {item.born}
-                </Text>
-                <Text style={styles.death}>
-                  <Text style={styles.cross}>✞</Text> {item.death}
-                </Text>
+                <View style={styles.dates}>
+                  <Text style={styles.born}>
+                    <Text style={styles.star}>☆</Text> {item.born}
+                  </Text>
+                  <Text style={styles.death}>
+                    <Text style={styles.cross}>✞</Text> {item.death}
+                  </Text>
+                </View>
                 <Story item={item} />
               </View>
             )}

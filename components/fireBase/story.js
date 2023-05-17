@@ -83,6 +83,7 @@ const Story = (props) => {
                   <Image
                     source={{ uri: item.imageUrl }}
                     style={openStoryStyling.image}
+                    resizeMode="cover"
                   />
                 ) : (
                   <Image source={logo512} style={openStoryStyling.image} />

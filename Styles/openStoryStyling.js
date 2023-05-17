@@ -7,6 +7,7 @@ const openStoryStyling = StyleSheet.create({
     alignItems: "center",
     padding: 20,
   },
+
   arrow: {
     marginLeft: 5,
     marginTop: 5,
@@ -14,6 +15,7 @@ const openStoryStyling = StyleSheet.create({
     zIndex: 1,
     height: 40,
     width: 40,
+    padding: 10,
   },
   storyContainer: {
     backgroundColor: "white",
@@ -43,7 +45,7 @@ const openStoryStyling = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 10,
     textAlign: "center",
-    width: "85%",
+    width: "80%",
     alignSelf: "center",
   },
   dates: {
@@ -60,8 +62,8 @@ const openStoryStyling = StyleSheet.create({
     textAlign: "center",
   },
   image: {
-    width: "60%",
-    height: 200,
+    width: 150,
+    height: 150,
     resizeMode: "cover",
     alignSelf: "center",
   },
