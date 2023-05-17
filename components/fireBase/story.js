@@ -158,8 +158,8 @@ const Story = (props) => {
                             setStoryID={storyID}
                             addTitleText={setTitle}
                             addCommentText={setComment}
-                            firstName={firstName}
-                            lastName={lastName}
+                            firstName={item.firstName}
+                            lastName={item.lastName}
                           />
                           {confirmationPopUp && (
                             <Modal
