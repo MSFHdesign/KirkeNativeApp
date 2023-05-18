@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Modal,
 } from "react-native";
-import { React, useState } from "react";
+import React, { useState } from "react";
 import arrowBack from "../../assets/Icons/arrowback.png";
 import buttonStyling from "../../Styles/ButtonStyling";
 import openStoryStyling from "../../Styles/openStoryStyling";

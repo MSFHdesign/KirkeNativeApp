@@ -26,9 +26,9 @@ const Story = (props) => {
   const [addStory, setAddStory] = useState(false);
   const [openPopUp, setOpenPopUp] = useState(false);
   const [confirmationPopUp, setConfirmationPopUp] = useState(false);
-  const [title, setTitle] = useState();
-  const [comment, setComment] = useState();
-  const [storyID, setStoryID] = useState();
+  const [title, setTitle] = useState("");
+  const [comment, setComment] = useState("");
+  const [storyID, setStoryID] = useState("");
   return (
     <>
       <View style={openStoryStyling.container}>

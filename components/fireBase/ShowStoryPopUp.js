@@ -41,9 +41,9 @@ export default function FirstPopUp({
           firstName: firstName,
           lastName: lastName,
         },
+        );
         addCommentText(""),
         addTitleText("")
-      );
       console.log("document written ID:", docRef.id);
     } catch (e) {
       console.error("Error adding document", e);
