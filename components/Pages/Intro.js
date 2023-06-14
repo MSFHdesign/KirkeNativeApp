@@ -21,7 +21,7 @@ export default class Intro extends Component {
       {
         title: "Start guide",
         text: [
-          "Kirkegårds historier er et arkiv for livshistorier om dem, der ligger begravet på danske kirkegårde.",
+          "Mindre lyset er et arkiv for livshistorier om dem, der ligger begravet på danske kirkegårde.",
         ],
         completed: false,
       },
